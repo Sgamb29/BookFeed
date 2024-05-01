@@ -1,0 +1,226 @@
+[gd_scene load_steps=7 format=3 uid="uid://33fo6mfokc0d"]
+
+[ext_resource type="PackedScene" uid="uid://b0t40qwnt2vr2" path="res://mainLabel.tscn" id="1_8pn05"]
+[ext_resource type="Script" path="res://settings-page.gd" id="1_58vnr"]
+[ext_resource type="PackedScene" uid="uid://baua8dcykafet" path="res://mainButton.tscn" id="2_4pr5c"]
+[ext_resource type="FontFile" uid="uid://6hsdruqq3gmn" path="res://IBMPlexMono-BoldItalic.ttf" id="3_ci6gd"]
+[ext_resource type="Theme" uid="uid://cmsp7u8ve34as" path="res://options-dropdown-font-theme.tres" id="4_n4sjv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jklrs"]
+bg_color = Color(0.278431, 0.407843, 0.290196, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_58vnr")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jklrs")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="BaseRows" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" parent="Panel/MarginContainer/BaseRows" groups=["Labels"] instance=ExtResource("1_8pn05")]
+layout_mode = 2
+text = "Settings"
+
+[node name="homeBtn" parent="Panel/MarginContainer/BaseRows" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+text = "Go Back to Feed"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/BaseRows"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MainRows" type="VBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="settingCols" type="HBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows"]
+layout_mode = 2
+
+[node name="fontLabel" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols" groups=["Labels"] instance=ExtResource("1_8pn05")]
+layout_mode = 2
+text = "Font Size:"
+
+[node name="fontOptionsBtn" type="OptionButton" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_n4sjv")
+theme_override_fonts/font = ExtResource("3_ci6gd")
+theme_override_font_sizes/font_size = 35
+item_count = 6
+popup/item_0/text = "60"
+popup/item_0/id = 4
+popup/item_1/text = "50"
+popup/item_1/id = 0
+popup/item_2/text = "40"
+popup/item_2/id = 1
+popup/item_3/text = "30"
+popup/item_3/id = 2
+popup/item_4/text = "25"
+popup/item_4/id = 3
+popup/item_5/text = "20"
+popup/item_5/id = 5
+
+[node name="fontEdit" type="LineEdit" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols"]
+layout_mode = 2
+placeholder_text = "50"
+alignment = 1
+
+[node name="settingCols2" type="HBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows"]
+layout_mode = 2
+
+[node name="txtAmountLabel" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols2" groups=["Labels"] instance=ExtResource("1_8pn05")]
+layout_mode = 2
+text = "Text Amount:"
+
+[node name="txtAmountOptionsBtn" type="OptionButton" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_n4sjv")
+theme_override_fonts/font = ExtResource("3_ci6gd")
+theme_override_font_sizes/font_size = 50
+item_count = 3
+popup/item_0/text = "Default"
+popup/item_0/id = 2
+popup/item_1/text = "Double"
+popup/item_1/id = 0
+popup/item_2/text = "Triple"
+popup/item_2/id = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows"]
+layout_mode = 2
+
+[node name="defaultBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/HBoxContainer" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Default"
+
+[node name="doubleBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/HBoxContainer" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Double"
+
+[node name="tripleBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/HBoxContainer" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Triple"
+
+[node name="settingCols3" type="HBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows"]
+layout_mode = 2
+
+[node name="txtAlignLabel" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols3" groups=["Labels"] instance=ExtResource("1_8pn05")]
+layout_mode = 2
+text = "Text Alignment:"
+
+[node name="txtAlignOptionsBtn" type="OptionButton" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols3"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_n4sjv")
+theme_override_fonts/font = ExtResource("3_ci6gd")
+theme_override_font_sizes/font_size = 50
+item_count = 2
+popup/item_0/text = "Left"
+popup/item_0/id = 2
+popup/item_1/text = "Center"
+popup/item_1/id = 0
+
+[node name="leftAlignBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols3" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+text = "Left"
+
+[node name="centerAlignBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols3" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+text = "Center"
+
+[node name="settingCols4" type="HBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows"]
+layout_mode = 2
+
+[node name="colorThemeLbl" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols4" groups=["Labels"] instance=ExtResource("1_8pn05")]
+layout_mode = 2
+text = "Color Theme:"
+
+[node name="colorThemOptsBtn" type="OptionButton" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols4"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_n4sjv")
+theme_override_fonts/font = ExtResource("3_ci6gd")
+theme_override_font_sizes/font_size = 50
+item_count = 2
+popup/item_0/text = "Default"
+popup/item_0/id = 2
+popup/item_1/text = "Dark"
+popup/item_1/id = 0
+
+[node name="defaultThemeBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols4" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+text = "Default"
+
+[node name="darkThemeBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols4" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+text = "Dark"
+
+[node name="sceneSwitchTimer" type="Timer" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows"]
+wait_time = 0.5
+one_shot = true
+
+[node name="BookmarkExportBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows" instance=ExtResource("2_4pr5c")]
+layout_mode = 2
+text = "Export Bookmarks"
+
+[node name="copyBtn" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows" instance=ExtResource("2_4pr5c")]
+visible = false
+layout_mode = 2
+text = "Copy To Clipboard"
+
+[node name="bookmarkOutputEdit" type="TextEdit" parent="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/homeBtn" to="." method="_on_home_btn_pressed"]
+[connection signal="item_selected" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols/fontOptionsBtn" to="." method="_on_font_options_btn_item_selected"]
+[connection signal="text_submitted" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols/fontEdit" to="." method="_on_font_edit_text_submitted"]
+[connection signal="item_selected" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols2/txtAmountOptionsBtn" to="." method="_on_txt_amount_options_btn_item_selected"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/HBoxContainer/defaultBtn" to="." method="_on_default_btn_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/HBoxContainer/doubleBtn" to="." method="_on_double_btn_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/HBoxContainer/tripleBtn" to="." method="_on_triple_btn_pressed"]
+[connection signal="item_selected" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols3/txtAlignOptionsBtn" to="." method="_on_txt_align_options_btn_item_selected"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols3/leftAlignBtn" to="." method="_on_left_align_btn_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols3/centerAlignBtn" to="." method="_on_center_align_btn_pressed"]
+[connection signal="item_selected" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols4/colorThemOptsBtn" to="." method="_on_color_them_opts_btn_item_selected"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols4/defaultThemeBtn" to="." method="_on_default_theme_btn_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/settingCols4/darkThemeBtn" to="." method="_on_dark_theme_btn_pressed"]
+[connection signal="timeout" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/sceneSwitchTimer" to="." method="_on_scene_switch_timer_timeout"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/BookmarkExportBtn" to="." method="_on_bookmark_export_btn_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/ScrollContainer/MainRows/copyBtn" to="." method="_on_copy_btn_pressed"]

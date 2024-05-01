@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://baua8dcykafet"]
+
+[ext_resource type="FontFile" uid="uid://6hsdruqq3gmn" path="res://IBMPlexMono-BoldItalic.ttf" id="1_60f6o"]
+[ext_resource type="StyleBox" uid="uid://dj7phk37x57od" path="res://mainButtonDefaultColor.tres" id="2_hu2wu"]
+[ext_resource type="Script" path="res://mainButton.gd" id="3_cd34n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12uom"]
+bg_color = Color(0.235294, 0.427451, 0.294118, 1)
+
+[node name="Button" type="Button"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_60f6o")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("2_hu2wu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_12uom")
+text = "Back"
+script = ExtResource("3_cd34n")

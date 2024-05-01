@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://du77mbgejvd1j"]
+
+[ext_resource type="PackedScene" uid="uid://b0t40qwnt2vr2" path="res://mainLabel.tscn" id="1_pxg60"]
+[ext_resource type="Script" path="res://main.gd" id="1_r5k6e"]
+[ext_resource type="StyleBox" uid="uid://cneutkje5n1ed" path="res://mainPanelDefaultColor.tres" id="2_k6had"]
+[ext_resource type="PackedScene" uid="uid://baua8dcykafet" path="res://mainButton.tscn" id="3_mlq15"]
+
+[node name="Base" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r5k6e")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_k6had")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="BaseRows" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" parent="Panel/MarginContainer/BaseRows" instance=ExtResource("1_pxg60")]
+layout_mode = 2
+
+[node name="followPageBtn" parent="Panel/MarginContainer/BaseRows" instance=ExtResource("3_mlq15")]
+layout_mode = 2
+text = "Follow Page"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/BaseRows"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MainRows" type="VBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/followPageBtn" to="." method="_on_follow_page_btn_pressed"]

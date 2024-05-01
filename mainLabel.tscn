@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0t40qwnt2vr2"]
+
+[ext_resource type="FontFile" uid="uid://6hsdruqq3gmn" path="res://IBMPlexMono-BoldItalic.ttf" id="1_pgdq2"]
+[ext_resource type="StyleBox" uid="uid://b71ir0clclo6q" path="res://mainLabelDefaultColor.tres" id="2_fa8m0"]
+[ext_resource type="Script" path="res://mainLabel.gd" id="2_l0tdw"]
+
+[node name="Label" type="Label"]
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_pgdq2")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("2_fa8m0")
+text = "Book Feed"
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("2_l0tdw")

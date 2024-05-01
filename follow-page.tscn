@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcyqjxj37p3ey"]
+
+[ext_resource type="Script" path="res://follow-page.gd" id="1_8nu1t"]
+[ext_resource type="PackedScene" uid="uid://b0t40qwnt2vr2" path="res://mainLabel.tscn" id="2_ijsuw"]
+[ext_resource type="PackedScene" uid="uid://baua8dcykafet" path="res://mainButton.tscn" id="3_4dm3d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plr0y"]
+bg_color = Color(0.278431, 0.407843, 0.290196, 1)
+
+[node name="Base" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8nu1t")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_plr0y")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 40
+
+[node name="BaseRows" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" parent="Panel/MarginContainer/BaseRows" instance=ExtResource("2_ijsuw")]
+layout_mode = 2
+text = "Books To Follow"
+
+[node name="homeBtn" parent="Panel/MarginContainer/BaseRows" instance=ExtResource("3_4dm3d")]
+layout_mode = 2
+text = "Go Back to Feed"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/BaseRows"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Panel/MarginContainer/BaseRows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 33
+text = "Followed Books:"
+alignment = 2
+
+[node name="checkBtnLangFilter" type="CheckButton" parent="Panel/MarginContainer/BaseRows/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 33
+text = "French:"
+alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/BaseRows"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MainRows" type="VBoxContainer" parent="Panel/MarginContainer/BaseRows/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="confBtn" parent="Panel/MarginContainer/BaseRows" instance=ExtResource("3_4dm3d")]
+layout_mode = 2
+text = "App Config"
+
+[node name="sceneSwitchTimer" type="Timer" parent="Panel/MarginContainer/BaseRows"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/homeBtn" to="." method="_on_home_btn_pressed"]
+[connection signal="toggled" from="Panel/MarginContainer/BaseRows/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="Panel/MarginContainer/BaseRows/HBoxContainer/checkBtnLangFilter" to="." method="_on_check_btn_lang_filter_toggled"]
+[connection signal="pressed" from="Panel/MarginContainer/BaseRows/confBtn" to="." method="_on_conf_btn_pressed"]
+[connection signal="timeout" from="Panel/MarginContainer/BaseRows/sceneSwitchTimer" to="." method="_on_scene_switch_timer_timeout"]

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxvovbosh6te5"]
+
+[ext_resource type="PackedScene" uid="uid://b0t40qwnt2vr2" path="res://mainLabel.tscn" id="1_8fuy7"]
+[ext_resource type="Script" path="res://bookfeedcard.gd" id="1_nkblw"]
+[ext_resource type="PackedScene" uid="uid://baua8dcykafet" path="res://mainButton.tscn" id="2_4qiyw"]
+[ext_resource type="FontFile" uid="uid://6hsdruqq3gmn" path="res://IBMPlexMono-BoldItalic.ttf" id="2_out4q"]
+
+[node name="bookOutputCard" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_nkblw")
+
+[node name="optionsCols" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="pgLbl" parent="optionsCols" instance=ExtResource("1_8fuy7")]
+layout_mode = 2
+text = "Page:"
+
+[node name="pageNumInp" type="LineEdit" parent="optionsCols"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_out4q")
+theme_override_font_sizes/font_size = 35
+placeholder_text = "1/1118"
+
+[node name="backBtn" parent="optionsCols" instance=ExtResource("2_4qiyw")]
+layout_mode = 2
+
+[node name="fwdBtn" parent="optionsCols" instance=ExtResource("2_4qiyw")]
+layout_mode = 2
+text = "Forward"
+
+[node name="titleLbl" parent="." instance=ExtResource("1_8fuy7")]
+layout_mode = 2
+text = "Book Title"
+
+[node name="outputLbl" parent="." instance=ExtResource("1_8fuy7")]
+layout_mode = 2
+text = "Book Output"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="btmBackBtn" parent="HBoxContainer" instance=ExtResource("2_4qiyw")]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "  <  "
+
+[node name="btmFwdBtn" parent="HBoxContainer" instance=ExtResource("2_4qiyw")]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "  >  "
+
+[node name="Label" parent="." instance=ExtResource("1_8fuy7")]
+layout_mode = 2
+text = ""
+
+[connection signal="text_submitted" from="optionsCols/pageNumInp" to="." method="_on_page_num_inp_text_submitted"]
+[connection signal="pressed" from="optionsCols/backBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="optionsCols/fwdBtn" to="." method="_on_fwd_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/btmBackBtn" to="." method="_on_btm_back_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/btmFwdBtn" to="." method="_on_btm_fwd_btn_pressed"]
